@@ -73,90 +73,90 @@ export default function ChatWindow({
           </div>
         )}
 
+        {isFirstMsg && (
+          <div className="chat-suggestions">
+            <button className="surprise-me-btn" onClick={handleSurpriseMe}>
+              🎲 Surprise Perhaps
+            </button>
+            {SUGGESTED_PROMPTS.map(function(prompt) {
+              return (
+                <button key={prompt} className="suggestion-chip" onClick={function() { onSend(prompt); }}>
+                  {prompt}
+                </button>
+              )
+            })}
+          </div>
+        )}
+
+        {/* Flight results */}
+        {(isSearching || safeFlights.length > 0) && (
+          <div className="chat-results-section">
+
+            {!isSearching && safeFlights.length > 0 && (
+              <>
+                <div className="chat-results-header">
+                  <div className="chat-results-header-left">
+                    <span className="chat-results-title">Ryanair round-trips from Edinburgh</span>
+                  </div>
+                  {onNewSearch && (
+                    <button className="chat-new-search-btn" onClick={onNewSearch}>
+                      ↩ New search
+                    </button>
+                  )}
+                </div>
+
+                <FlightFilters
+                  nightsPreset={nightsPreset}
+                  maxPrice={maxPrice}
+                  totalCount={safeFlights.length}
+                  filteredCount={renderableFlights.length}
+                  onSetFilters={onSetFilters}
+                  onReset={onResetFilters}
+                  activeFilterCount={activeFilterCount || 0}
+                />
+
+                {renderableFlights.length === 0 && (
+                  <div className="filters-no-results">
+                    Shit: No results match these filters — try widening your trip length or price range.
+                  </div>
+                )}
+              </>
+            )}
+
+            {isRating && (
+              <div className="rating-notice">
+                <div className="rating-spinner" />
+                <span>AI is rating deals…</span>
+              </div>
+            )}
+
+            {isSearching ? (
+              [1, 2, 3].map(function(i) {
+                return (
+                  <div key={i} className="flight-skeleton">
+                    <div className="skeleton skeleton-line short" />
+                    <div className="skeleton skeleton-line long" />
+                    <div className="skeleton skeleton-line med" />
+                  </div>
+                )
+              })
+            ) : (
+              renderableFlights.map(function(flight) {
+                return (
+                  <FlightCard
+                    key={String(flight.id)}
+                    flight={flight}
+                    onClick={function() { onFlightClick(flight); }}
+                  />
+                )
+              })
+            )}
+
+          </div>
+        )}
+
         <div ref={bottomRef} />
       </div>
-
-      {isFirstMsg && (
-        <div className="chat-suggestions">
-          <button className="surprise-me-btn" onClick={handleSurpriseMe}>
-            🎲 Surprise Perhaps
-          </button>
-          {SUGGESTED_PROMPTS.map(function(prompt) {
-            return (
-              <button key={prompt} className="suggestion-chip" onClick={function() { onSend(prompt); }}>
-                {prompt}
-              </button>
-            )
-          })}
-        </div>
-      )}
-
-      {/* Flight results */}
-      {(isSearching || safeFlights.length > 0) && (
-        <div className="chat-results-section">
-
-          {!isSearching && safeFlights.length > 0 && (
-            <>
-              <div className="chat-results-header">
-                <div className="chat-results-header-left">
-                  <span className="chat-results-title">Ryanair round-trips from Edinburgh</span>
-                </div>
-                {onNewSearch && (
-                  <button className="chat-new-search-btn" onClick={onNewSearch}>
-                    ↩ New search
-                  </button>
-                )}
-              </div>
-
-              <FlightFilters
-                nightsPreset={nightsPreset}
-                maxPrice={maxPrice}
-                totalCount={safeFlights.length}
-                filteredCount={renderableFlights.length}
-                onSetFilters={onSetFilters}
-                onReset={onResetFilters}
-                activeFilterCount={activeFilterCount || 0}
-              />
-
-              {renderableFlights.length === 0 && (
-                <div className="filters-no-results">
-                  Shit: No results match these filters — try widening your trip length or price range.
-                </div>
-              )}
-            </>
-          )}
-
-          {isRating && (
-            <div className="rating-notice">
-              <div className="rating-spinner" />
-              <span>AI is rating deals…</span>
-            </div>
-          )}
-
-          {isSearching ? (
-            [1, 2, 3].map(function(i) {
-              return (
-                <div key={i} className="flight-skeleton">
-                  <div className="skeleton skeleton-line short" />
-                  <div className="skeleton skeleton-line long" />
-                  <div className="skeleton skeleton-line med" />
-                </div>
-              )
-            })
-          ) : (
-            renderableFlights.map(function(flight) {
-              return (
-                <FlightCard
-                  key={String(flight.id)}
-                  flight={flight}
-                  onClick={function() { onFlightClick(flight); }}
-                />
-              )
-            })
-          )}
-
-        </div>
-      )}
 
       <ChatInput onSend={onSend} disabled={isThinking || isSearching} />
     </div>

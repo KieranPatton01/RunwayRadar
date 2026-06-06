@@ -106,7 +106,7 @@ export default function FlightCard({ flight, onClick }) {
   className="flight-card-book-btn"
   onClick={function(e) { e.stopPropagation(); }}
 >
-  {'🎟 Book with Ryanair ↗'}
+  {'Book with Ryanair'}
 </a>
 
     </article>
