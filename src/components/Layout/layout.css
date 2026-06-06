@@ -1,0 +1,270 @@
+/* ============================================================
+   RunwayRadar — Layout CSS
+   Header, bottom nav, main content area
+   ============================================================ */
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--safe-top);
+  transition: background var(--transition-med), border-color var(--transition-med);
+}
+
+.header-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────────
+   Deliberately uses --font-logo (always Syne) NOT --font-heading.
+   This keeps the RunwayRadar wordmark consistent across all three themes,
+   even though the pink theme overrides --font-heading to Playfair Display.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.header-logo-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.header-logo-text {
+  font-family: var(--font-logo); /* ← Syne always, regardless of theme */
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.header-logo-text span {
+  color: var(--accent);
+}
+
+/* ── Header action buttons ────────────────────────────────────────────────── */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.header-btn:hover {
+  background: var(--accent-light);
+  color: var(--text-primary);
+}
+
+/* ── New Search button in header ──────────────────────────────────────────── */
+
+.header-new-search-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.header-new-search-btn:hover {
+  background: var(--accent-light);
+  border-color: var(--border-accent);
+  color: var(--accent);
+}
+
+/* ── User dropdown ────────────────────────────────────────────────────────── */
+
+.header-user-menu {
+  position: relative;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  padding: 8px;
+  z-index: 200;
+  animation: scale-in 0.2s ease forwards;
+  transform-origin: top right;
+}
+
+.user-dropdown-email {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: 6px 10px 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-align: left;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.user-dropdown-item:hover {
+  background: var(--accent-light);
+  color: var(--text-primary);
+}
+
+.user-dropdown-item.danger:hover {
+  background: rgba(232, 76, 76, 0.10);
+  color: var(--danger);
+}
+
+/* ── Bottom navigation ───────────────────────────────────────────────────── */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding-bottom: var(--safe-bottom);
+  transition: background var(--transition-med), border-color var(--transition-med);
+}
+
+.bottom-nav-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 56px;
+}
+
+.nav-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  padding: 8px 0;
+}
+
+.nav-tab.active {
+  color: var(--accent);
+}
+
+.nav-tab:hover:not(.active) {
+  color: var(--text-secondary);
+}
+
+.nav-tab-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.nav-tab.active .nav-tab-icon {
+  transform: scale(1.1);
+}
+
+.nav-tab-label {
+  line-height: 1;
+}
+
+/* Saved count badge */
+.nav-badge {
+  position: relative;
+}
+
+.nav-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  min-width: 16px;
+  height: 16px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-size: 0.625rem;
+  font-weight: 700;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+/* ── Main content area ───────────────────────────────────────────────────── */
+
+.main-content {
+  padding-top: calc(56px + var(--safe-top));
+  padding-bottom: calc(56px + var(--safe-bottom));
+  min-height: 100dvh;
+}

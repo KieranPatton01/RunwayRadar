@@ -1,0 +1,327 @@
+/* src/components/FlightCard/flightcard.css */
+
+.flight-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  animation: fade-in-up 0.3s ease forwards;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.flight-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.flight-card:active {
+  transform: translateY(0);
+}
+
+.flight-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: var(--deal-colour, var(--accent));
+  transition: background var(--transition-med);
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+.flight-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.flight-card-destination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.flight-card-flag { font-size: 1.4rem; flex-shrink: 0; }
+
+.flight-card-city {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flight-card-country {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.flight-card-save {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px 8px;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.flight-card-save:hover,
+.flight-card-save.saved {
+  background: var(--accent-light);
+  border-color: var(--border-accent);
+  color: var(--accent);
+}
+
+/* ── Nights badge — key UX element, shown prominently ───────────────────── */
+
+.flight-card-nights-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-light);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.nights-number {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.nights-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.nights-dates {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-left: auto;
+}
+
+/* ── Compact route + leg rows ────────────────────────────────────────────── */
+
+.flight-card-route {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.flight-card-leg-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flight-card-leg-inline.return {
+  opacity: 0.85;
+}
+
+.leg-inline-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.leg-inline-time {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.leg-inline-date {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.leg-inline-dur {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.route-divider {
+  font-size: 0.875rem;
+  color: var(--accent);
+  padding: 2px 0;
+  text-align: center;
+  display: none; /* hidden — visual separation comes from leg rows */
+}
+
+/* ── Footer — price + deal badge ─────────────────────────────────────────── */
+
+.flight-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-bottom: 10px;
+}
+
+.flight-card-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flight-card-total {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.flight-card-pp-label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.flight-card-pp { font-size: 0.8125rem; color: var(--text-muted); }
+.flight-card-airline { font-size: 0.8125rem; color: var(--text-secondary); margin-top: 2px; }
+
+/* ── Deal badge ──────────────────────────────────────────────────────────── */
+
+.deal-badge {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  font-family: var(--font-body);
+}
+
+.deal-badge.rating-0 { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+.deal-badge.rating-1 { background: #ffedd5; color: #c2410c; border: 1px solid #fdba74; }
+.deal-badge.rating-2 { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+.deal-badge.rating-3 { background: #fef9c3; color: #a16207; border: 1px solid #fde047; }
+.deal-badge.rating-4 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.deal-badge.rating-5 { background: #d1fae5; color: #047857; border: 1px solid #6ee7b7; }
+
+.deal-badge-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Transit badge ───────────────────────────────────────────────────────── */
+
+.flight-card-transit {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 9px 12px;
+  margin-bottom: 10px;
+  cursor: help;
+  transition: border-color var(--transition-fast);
+}
+
+.flight-card-transit:hover {
+  border-color: var(--transit-colour, var(--border-hover));
+}
+
+.transit-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+.transit-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.transit-label { font-size: 0.8125rem; font-weight: 600; }
+.transit-detail { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.transit-pip-row { display: flex; gap: 3px; flex-shrink: 0; }
+.transit-pip { width: 6px; height: 6px; border-radius: 50%; transition: background var(--transition-med); }
+
+/* ── AI summary ──────────────────────────────────────────────────────────── */
+
+.flight-card-ai-summary {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  border-left: 2px solid var(--accent-light);
+  padding-left: 8px;
+  margin-bottom: 10px;
+}
+
+/* ── Book button ─────────────────────────────────────────────────────────── */
+
+.flight-card-book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--bg-badge);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.flight-card-book-btn:hover {
+  background: var(--accent-light);
+  border-color: var(--border-accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.flight-card-book-btn:active { transform: translateY(0); }
+
+.book-btn-icon { font-size: 1rem; }
+.book-btn-text { flex: 1; text-align: center; }
+.book-btn-arrow { font-size: 0.8rem; opacity: 0.75; }

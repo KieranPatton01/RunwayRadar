@@ -1,0 +1,221 @@
+/* src/components/SavedDeals/saved.css */
+
+.saved-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 16px 16px;
+}
+
+.saved-page-header {
+  margin-bottom: 20px;
+}
+
+.saved-page-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.saved-page-sub {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Empty state */
+.saved-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.saved-empty-icon {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.saved-empty-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.saved-empty-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 260px;
+}
+
+/* Flights list */
+.saved-flights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.saved-section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  margin-top: 4px;
+}
+
+/* Saved searches */
+.saved-searches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-search-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.saved-search-item:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+}
+
+.saved-search-text {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.saved-search-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.saved-search-run {
+  background: var(--accent-light);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  transition: all var(--transition-fast);
+}
+
+.saved-search-run:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.saved-search-remove {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  transition: all var(--transition-fast);
+}
+
+.saved-search-remove:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* Notifications toggle */
+.notifications-section {
+  margin-top: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.notifications-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.notifications-info {
+  flex: 1;
+}
+
+.notifications-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.notifications-sub {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Toggle switch */
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-track {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--bg-badge);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all var(--transition-fast);
+}
+
+.toggle-track::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.toggle-input:checked + .toggle-track {
+  background: var(--accent-light);
+  border-color: var(--border-accent);
+}
+
+.toggle-input:checked + .toggle-track::after {
+  left: calc(100% - 19px);
+  background: var(--accent);
+}

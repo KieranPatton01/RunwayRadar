@@ -1,0 +1,207 @@
+/* ============================================================
+   RunwayRadar — Design Tokens & Theme Variables
+   Three themes: dark (default) | light | pink
+   Applied via data-theme attribute on <html>
+
+   FONT SYSTEM:
+   --font-logo    → Always 'Syne' — never overridden by any theme.
+                    Used exclusively for the RunwayRadar wordmark.
+   --font-heading → Changes per theme (Syne for dark/light, Playfair for pink)
+                    Used for page headings, card titles, modal headers.
+   --font-body    → Always 'DM Sans' — never overridden.
+   ============================================================ */
+
+:root {
+  /* ── Fonts (never overridden — theme-safe) ─────────────────── */
+  --font-logo:    'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-heading: 'Syne', sans-serif;
+
+  /* ── Radii ──────────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* ── Shadows ────────────────────────────────────────────────── */
+  --shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card:  0 4px 24px rgba(0, 0, 0, 0.10);
+  --shadow-modal: 0 16px 64px rgba(0, 0, 0, 0.20);
+
+  /* ── Transitions ────────────────────────────────────────────── */
+  --transition-fast: 0.15s ease;
+  --transition-med:  0.25s ease;
+  --transition-slow: 0.40s ease;
+
+  /* ── iOS safe area insets ───────────────────────────────────── */
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ============================================================
+   DARK THEME (default)
+   Deep navy/black background + gold accent
+   ============================================================ */
+:root,
+[data-theme='dark'] {
+  --bg-primary:    #080810;
+  --bg-surface:    #111120;
+  --bg-card:       #161628;
+  --bg-card-hover: #1c1c38;
+  --bg-input:      #1e1e35;
+  --bg-badge:      #252545;
+
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-hover:  rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(212, 168, 67, 0.35);
+
+  --text-primary:   #f0f0f8;
+  --text-secondary: #9090b0;
+  --text-muted:     #55556a;
+
+  --accent:       #d4a843;
+  --accent-hover: #e0b855;
+  --accent-light: rgba(212, 168, 67, 0.12);
+  --accent-glow:  rgba(212, 168, 67, 0.06);
+
+  --user-bubble: #1e1e38;
+  --ai-bubble:   #111120;
+
+  --success: #4caf88;
+  --warning: #e8a030;
+  --danger:  #e84c4c;
+  --info:    #4c88e8;
+
+  --deal-5: #4caf88;
+  --deal-4: #7cb84c;
+  --deal-3: #d4a843;
+  --deal-2: #e87c30;
+  --deal-1: #e84c4c;
+
+  --transit-easy:     #4caf88;
+  --transit-moderate: #d4a843;
+  --transit-difficult:#e87c30;
+
+  --nav-bg:    rgba(8,  8,  16, 0.90);
+  --header-bg: rgba(8,  8,  16, 0.85);
+
+  --gradient-hero:
+    radial-gradient(ellipse at 30% 20%, rgba(212,168,67,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(76,76,140,0.08)  0%, transparent 60%),
+    linear-gradient(180deg, #080810 0%, #0d0d20 100%);
+
+  --meta-theme: #080810;
+}
+
+/* ============================================================
+   LIGHT THEME
+   Clean white background + deep navy accent
+   ============================================================ */
+[data-theme='light'] {
+  --bg-primary:    #f4f6fb;
+  --bg-surface:    #ffffff;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f8f9fe;
+  --bg-input:      #eef0f7;
+  --bg-badge:      #e8eaf5;
+
+  --border:        rgba(0, 0, 0, 0.07);
+  --border-hover:  rgba(0, 0, 0, 0.14);
+  --border-accent: rgba(26, 58, 110, 0.30);
+
+  --text-primary:   #1a1a2e;
+  --text-secondary: #555570;
+  --text-muted:     #9090aa;
+
+  --accent:       #1a3a6e;
+  --accent-hover: #2a4a8e;
+  --accent-light: rgba(26, 58, 110, 0.08);
+  --accent-glow:  rgba(26, 58, 110, 0.04);
+
+  --user-bubble: #e8eaf5;
+  --ai-bubble:   #ffffff;
+
+  --success: #2e7d52;
+  --warning: #c07020;
+  --danger:  #c0392b;
+  --info:    #1a3a8e;
+
+  --deal-5: #2e7d52;
+  --deal-4: #4a8e2e;
+  --deal-3: #c07020;
+  --deal-2: #c05020;
+  --deal-1: #c0392b;
+
+  --transit-easy:     #2e7d52;
+  --transit-moderate: #c07020;
+  --transit-difficult:#c05020;
+
+  --nav-bg:    rgba(244, 246, 251, 0.92);
+  --header-bg: rgba(244, 246, 251, 0.88);
+
+  --gradient-hero:
+    radial-gradient(ellipse at 30% 20%, rgba(26,58,110,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(76,100,180,0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #f4f6fb 0%, #eef0f8 100%);
+
+  --meta-theme: #f4f6fb;
+}
+
+/* ============================================================
+   PINK THEME 🌸 (Isla's theme)
+   Soft rose tones + floral background pattern
+   Uses Playfair Display for content headings (romantic feel)
+   Logo always stays in Syne via --font-logo
+   ============================================================ */
+[data-theme='pink'] {
+  /* Playfair Display for content headings only — logo is unaffected */
+  --font-heading: 'Playfair Display', serif;
+
+  --bg-primary:    #fdf0f7;
+  --bg-surface:    #fff5f9;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #fff8fb;
+  --bg-input:      #fce8f2;
+  --bg-badge:      #fce0ee;
+
+  --border:        rgba(210, 80, 130, 0.12);
+  --border-hover:  rgba(210, 80, 130, 0.24);
+  --border-accent: rgba(210, 80, 130, 0.40);
+
+  --text-primary:   #3d1228;
+  --text-secondary: #8a3d60;
+  --text-muted:     #c090a8;
+
+  --accent:       #d43870;
+  --accent-hover: #c0285e;
+  --accent-light: rgba(212, 56, 112, 0.10);
+  --accent-glow:  rgba(212, 56, 112, 0.05);
+
+  --user-bubble: #fce8f2;
+  --ai-bubble:   #ffffff;
+
+  --success: #4caf88;
+  --warning: #d0803a;
+  --danger:  #e84c4c;
+  --info:    #9060e0;
+
+  --deal-5: #4caf88;
+  --deal-4: #78b84c;
+  --deal-3: #d0903a;
+  --deal-2: #e07040;
+  --deal-1: #e84c4c;
+
+  --transit-easy:     #4caf88;
+  --transit-moderate: #d0903a;
+  --transit-difficult:#e07040;
+
+  --nav-bg:    rgba(253, 240, 247, 0.92);
+  --header-bg: rgba(253, 240, 247, 0.88);
+
+  --gradient-hero:
+    radial-gradient(ellipse at 30% 20%, rgba(212,56,112,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(220,150,200,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #fdf0f7 0%, #fce8f2 100%);
+
+  --meta-theme: #fdf0f7;
+}

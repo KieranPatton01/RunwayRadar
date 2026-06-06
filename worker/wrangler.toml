@@ -1,0 +1,20 @@
+# worker/wrangler.toml
+# Cloudflare Worker configuration for the RunwayRadar API.
+# Defines deployment settings, environment variables, and secrets.
+
+name = "runway-radar-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://kieranpatton01.github.io"
+
+# ============================================================
+# Secrets — set with wrangler CLI (NEVER put real values here):
+#
+#   npx wrangler secret put GEMINI_API_KEY
+#   npx wrangler secret put FIREBASE_WEB_API_KEY
+#   npx wrangler secret put ALLOWED_EMAILS
+#
+# ALLOWED_EMAILS format: "kieran@example.com,isla@example.com"
+# ============================================================
