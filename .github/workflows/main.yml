@@ -34,6 +34,14 @@ jobs:
         run: npm ci
         
       - name: Build
+        env:
+          VITE_WORKER_URL: https://runway-radar-api.isingingbanana.workers.dev
+          VITE_MAPBOX_TOKEN: pk.eyJ1Ijoia2llcmFuMDEiLCJhIjoiY21wZWRnOGIwMDRnMjJwcjNnNHY2ZDRoeiJ9.bldXK-De2d5NYuw29rpsCw
+          VITE_FIREBASE_API_KEY: AIzaSyD40AiQ6NJCHg9zTdyqgTa_g1eBCGZ9Yw4
+          VITE_FIREBASE_AUTH_DOMAIN: runwayradar-b7289.firebaseapp.com
+          VITE_FIREBASE_PROJECT_ID: runwayradar-b7289
+          VITE_FIREBASE_APP_ID: 1:64762013131:web:0fa63c2ba0913e37a6024e
+          VITE_USE_MOCK_DATA: true
         run: npm run build
         
       - name: Setup Pages
