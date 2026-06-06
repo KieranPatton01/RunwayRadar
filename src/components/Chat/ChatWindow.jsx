@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 import ChatMessage from './ChatMessage.jsx'
 import ChatInput from './ChatInput.jsx'
 import FlightCard from '../FlightCard/FlightCard.jsx'
-import FlightFilters from '../Filters/FlightFilters.jsx'
+import FlightFilters from '../filters/FlightFilters.jsx'
 import { SUGGESTED_PROMPTS, getRandomDestination } from '../../config/aiInstructions.js'
 import './chat.css'
 
