@@ -104,7 +104,7 @@ export default function App() {
         onNewSearch={handleNewSearch}
       />
 
-      <main className={(activePage === 'globe' || activePage === 'map') ? 'main-content page-globe' : 'main-content'}>
+      <main className={(activePage === 'globe' || activePage === 'map' || activePage === 'chat') ? `main-content page-${activePage}` : 'main-content'}>
         {activePage === 'chat' && (
           <ChatWindow
             messages={messages}

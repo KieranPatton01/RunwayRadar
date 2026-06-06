@@ -5,7 +5,7 @@
 .chat-page {
   display: flex;
   flex-direction: column;
-  height: calc(100dvh - 56px - 56px - var(--safe-top) - var(--safe-bottom));
+  height: 100%;
   max-width: 680px;
   margin: 0 auto;
 }

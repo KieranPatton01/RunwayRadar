@@ -271,9 +271,13 @@ export default function Globe({ onChatAboutCountry }) {
                     <div key={city.name} className="globe-city-card">
                       <div className="globe-city-name">
                         <a 
-                          href={`https://www.tiktok.com/search?q=${encodeURIComponent(city.name + ' ' + panel.countryName)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const query = encodeURIComponent(city.name + ' ' + panel.countryName);
+                            window.location.href = `snssdk1233://search?keyword=${query}`;
+                            setTimeout(() => window.open(`https://www.tiktok.com/search?q=${query}`, '_blank'), 500);
+                          }}
                           style={{ color: 'inherit', textDecoration: 'inherit' }}
                           title="Search on TikTok"
                         >

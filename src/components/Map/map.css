@@ -53,7 +53,7 @@
 
 .global-map-overlay {
   position: absolute;
-  top: calc(120px + var(--safe-top, 0px));
+  bottom: calc(90px + var(--safe-bottom, 0px));
   left: 50%;
   transform: translateX(-50%);
   background: rgba(15, 23, 42, 0.75);

@@ -50,8 +50,16 @@
 /* Globe tab needs to fill the full available space with no overflow.
    The globe canvas uses position:absolute internally so the parent
    must have a defined height — we set it here when on the globe page. */
-.main-content.page-globe {
+.main-content.page-globe,
+.main-content.page-map {
   padding: 0;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content.page-chat {
   height: 100dvh;
   overflow: hidden;
   display: flex;

@@ -24,9 +24,13 @@ export default function GuideSection({ icon, title, type, data, delay = 0 }) {
               <div className="guide-item-info">
                 <div className="guide-item-name">
                   <a 
-                    href={`https://www.tiktok.com/search?q=${encodeURIComponent(item.name)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const query = encodeURIComponent(item.name);
+                      window.location.href = `snssdk1233://search?keyword=${query}`;
+                      setTimeout(() => window.open(`https://www.tiktok.com/search?q=${query}`, '_blank'), 500);
+                    }}
                     style={{ color: 'inherit', textDecoration: 'inherit' }}
                     title="Search on TikTok"
                   >
@@ -112,7 +116,17 @@ export default function GuideSection({ icon, title, type, data, delay = 0 }) {
                   <div key={i} className="guide-tip-item">
                     <span className="tip-bullet">✨</span>
                     <span>
-                      <a href={searchUrl} target="_blank" rel="noopener noreferrer" className="trinket-link" title="Search on TikTok">
+                      <a 
+                        href="#" 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const query = encodeURIComponent(name);
+                          window.location.href = `snssdk1233://search?keyword=${query}`;
+                          setTimeout(() => window.open(`https://www.tiktok.com/search?q=${query}`, '_blank'), 500);
+                        }}
+                        className="trinket-link" 
+                        title="Search on TikTok"
+                      >
                         {name}
                       </a>
                       {desc ? ` — ${desc}` : ''}
